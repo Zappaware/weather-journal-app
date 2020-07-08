@@ -1,0 +1,26 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "Application that allow us to comunicate with the openWeatherMap API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/Zappaware/weather-journal-app.git"
+  },
+  "keywords": [
+    "openWeatherMap",
+    "Node",
+    "Express"
+  ],
+  "author": "Sergio Cervantes",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
