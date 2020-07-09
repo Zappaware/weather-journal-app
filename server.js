@@ -21,14 +21,26 @@ app.use(express.static('website'));
 
 // Setup Server
 
+//Setup port
 const port = 8000;
 
+//Setup Server listening
 const server = app.listen(port, ()=>{console.log(`listening on localhost:${port}`)});
 
-app.get('/all', (req, res)=>{
+/*app.get('/all', (req, res)=>{
     res.send('Hello World')
-});
+});*/
 
+//GET route
 app.get('/all', (req, res)=>{
     res.send(JSON.stringify(projectData))
+});
+
+//POST route
+
+app.post('/all', (req, res)=>{
+    projectData.temp = req.body.temp
+    projectData.date = req.body.date
+    projectData.userResponse = req.body.userResponse
+    res.end()
 });
