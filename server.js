@@ -27,20 +27,17 @@ const port = 8000;
 //Setup Server listening
 const server = app.listen(port, ()=>{console.log(`listening on localhost:${port}`)});
 
-/*app.get('/all', (req, res)=>{
-    res.send('Hello World')
-});*/
 
 //GET route
 app.get('/all', (req, res)=>{
-    res.send(JSON.stringify(projectData))
+    res.send(projectData)
 });
 
 //POST route
 
-app.post('/all', (req, res)=>{
-    projectData.temp = req.body.temp
-    projectData.date = req.body.date
-    projectData.userResponse = req.body.userResponse
-    res.end()
+app.post('/add', (req, res)=>{
+    projectData.temperature = req.body.temperature;
+    projectData.date = req.body.date;
+    projectData.userFeelings = req.body.userFeelings;
+    res.send(true);
 });
