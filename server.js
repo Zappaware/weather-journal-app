@@ -36,6 +36,8 @@ app.get('/all', (req, res)=>{
 //POST route
 
 app.post('/add', (req, res)=>{
+    /*I liked most the object project data type because I was using the .push method for arrays, 
+    but I was getting to much erros and also to update the UI the browser had problems too.*/
     projectData.temperature = req.body.temperature;
     projectData.date = req.body.date;
     projectData.userFeelings = req.body.userFeelings;
