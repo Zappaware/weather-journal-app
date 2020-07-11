@@ -27,7 +27,7 @@ const getAll = (e) => {
 
 /* Function to GET Web API Data*/
 const getWeather = async (base, zip, country, appId)=>{
-    let url = `http://${base}zip=${zip},${country}&appid=${appId}`;
+    let url = `http://${base}zip=${zip},${country}&appid=${appId}&units=imperial`;
     const response = await fetch(url);
     try {
         const apiData = await response.json();
