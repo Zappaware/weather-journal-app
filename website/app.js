@@ -1,13 +1,7 @@
 /* Global Variables */
-const myAppId = `23eaaf61fab62a2f43f0fc31f3893e2a`;
+const myAppId = ``;
 const baseUrl = `api.openweathermap.org/data/2.5/weather?`;
-/*I am using the .value property and in Mozilla works fine, but I'm getting problems across browser compatibility because I'm not fetching nothing, 
-thus nothing works, I really would like feedback here because I want the code to work in all browsers*/ 
-const zipCode = document.getElementById('zip').value;
-const countryCode = document.getElementById('country').value;
-const userResponse = document.getElementById('feelings').value;
 const submitButton = document.getElementById('generate');
-
  
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -16,11 +10,20 @@ let newDate = d.getDate()+'.'+ d.getMonth()+'.'+ d.getFullYear();
 
 /* Function called by event listener */
 const getAll = (e) => {
-    //Right here works just fine in Mozilla, but in other browsers the url it is not working
+    const zipCode = document.getElementById('zip').value;
+    const countryCode = document.getElementById('country').value;
+    const userResponse = document.getElementById('feelings').value;
     getWeather(baseUrl, zipCode, countryCode, myAppId)
-    .then((tempData)=>{postUserResponse('/add', {temperature: tempData, date: newDate, userFeelings: userResponse})})
-    .then(getData('/all'));
+    .then((tempData)=>{
+       postUserResponse('/add', 
+       {
+           temperature: tempData, 
+           date: newDate, 
+           userFeelings: userResponse})
+           .then(getData('/all'))
+        });
 }
+
 
 /* Function to GET Web API Data*/
 const getWeather = async (base, zip, country, appId)=>{
@@ -66,7 +69,6 @@ const getData = async (url='') => {
         console.log(allData)
         document.getElementById('date').innerHTML = `Date: ${allData.date}`;
         document.getElementById('temp').innerHTML = `Temperature: ${allData.temperature}`;
-        //Even with the userFeelings part the .value property doesn't work well.
         document.getElementById('content').innerHTML = `Feelings: ${allData.userFeelings}`;
     }catch(error){
         console.log("error",error)
